@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+</head>
+
+<body>
+  {% include 'components/navbar.html' %}
+  <section class="home">
+    <div class="text2">
+      <div style="position:sticky;width: 100%;top: 0;background-color: #fff;">
+        <button class="button">
+          <a href="{% url 'Add Tasks' %}">
+            Add task
+          </a>
+        </button>
+      </div>
+      <table>
+        <caption>Tasks</caption>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Details</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in task_list %}
+          <tr>
+            <td data-label="Name">{{ item.name }}</td>
+            <td data-label="Details">{{ item.details|default_if_none:'' }}</td>
+            <td data-label="Date">{{ item.date|default_if_none:'' }}</td>
+            <td data-label="Status">{{ item.status }}</td>
+            <td data-label="Edit">
+              <button class="button">
+                <a href="{% url 'Edit Tasks' item.id %}">
+                  Edit
+                </a>
+              </button>
+            </td>
+            <td data-label="Delete">
+              <button class="button">
+                <a href="{% url 'Delete Tasks' item.id %}">
+                  Delete
+                </a>
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</body>
+
+</html>

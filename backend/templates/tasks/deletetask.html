@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+   </head>
+<body>
+  <div class="wrapper">
+    <h2>Confirmation</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <p>Are you sure you want to delete?</p>
+      <div class="input-box button">
+        <input type="submit" value="Yes">
+      </div>
+      <button class="button1">
+        <a href="{% url 'Tasks' %}">Cancel</a>
+      </button>
+      <div class="text">
+        <h3> {{form.errors}} </h3>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en" dir="ltr">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+</head>
+
+<body>
+  <div class="wrapper">
+    <h2>Registration</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="input-box">
+        {{form.username}}
+      </div>
+      <div class="input-box">
+        {{form.password1}}
+      </div>
+      <div class="input-box">
+        {{form.password2}}
+      </div>
+      <!-- <div class="policy">
+        <input type="checkbox">
+        <h3>I accept all terms & condition</h3>
+      </div> -->
+      <div class="input-box button">
+        <input type="submit" value="Register">
+      </div>
+      <div class="text">
+        <h3> {{form.errors}} </h3>
+        {% for message in messages %}
+        <h3>{{message}} </h3>
+        {% endfor %}
+        <h3>Already have an account? <a href="{% url 'Tasks' %}">Login</a></h3>
+      </div>
+    </form>
+  </div>
+  <script>
+    //Query All input fields
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Enter username';
+    form_fields[2].placeholder = 'Enter password';
+    form_fields[3].placeholder = 'Confirm password';
+
+
+    for (var field in form_fields) {
+      form_fields[field].className += ' form-control'
+    }
+  </script>
+</body>
+
+</html>
