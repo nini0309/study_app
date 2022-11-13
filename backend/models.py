@@ -22,3 +22,16 @@ class Task(models.Model):
     
     class Meta:
         ordering = ['date']
+
+class Course(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    subject = models.CharField(max_length=100, null=True)
+    important = models.CharField(max_length=500, null=True, blank=True)
+    done = models.CharField(max_length=500, null=True, blank=True)
+    left = models.CharField(max_length=500, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return f'{self.subject}'
+    
+    class Meta:
+        ordering = ['subject']
