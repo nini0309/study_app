@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html,body{
+  display: grid;
+  height: 100%;
+  place-items: center;
+}
+
+.container{
+  /* margin-top: 10px; */
+  /* margin: 30; */
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.container .box{
+  margin-top: 10px;
+  width: calc(25% - 10px);
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 30px;
+  border-radius: 5px;
+}
+
+.container .box .image{
+  margin: 10px 0;
+  height: 50px;
+  width: 50px;
+  padding: 3px;
+  border-radius: 50%;
+}
+.box .image img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+.box p{
+  text-align: center;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.box .name_job{
+  margin: 10px 0 3px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.btns{
+  margin-top: 20px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.btns button{
+  background: #000;
+  width: 100%;
+  padding: 9px 9px;
+  outline: none;
+  /* border: 2px solid #000; */
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+
+.btns1 button{
+  margin-top: 20px;
+  margin-bottom: 5px;
+  background: none;
+  width: 100%;
+  padding: 9px 9px;
+  outline: none;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  color: #000;
+  transition: all 0.3s linear;
+}
+
+.btns button:last-child{
+  color: #fff;
+  margin-left: 5px;
+}
+.btns button:hover{
+  background: #707070;
+  color: #fff;
+}
+
+.btns1 button:hover{
+  background: #707070;
+  color: #fff;
+}
+
+@media (max-width:1045px){
+  .container .box{
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+  }
+}
+@media (max-width:710px){
+  .container .box{
+    width: 100%;
+  }
+}
