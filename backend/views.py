@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import Task, Course
+from .models import Task, Course, Link
 from .forms import AddTask, AddCourse
 
 # Create your views here.
@@ -124,7 +124,11 @@ def deletecourses(request, pk):
 
 @login_required(login_url='Log in')
 def links(request):
-    return render(request, 'links.html')
+    link_list = Link.objects.filter(user=request.user)
+    context = {
+        'link_list': link_list
+    }
+    return render(request, 'links.html', context)
 
 
 @login_required(login_url='Log in')

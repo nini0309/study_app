@@ -35,3 +35,8 @@ class Course(models.Model):
     
     class Meta:
         ordering = ['subject']
+
+class Link(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=100,null=True)
+    link = models.CharField(max_length=500,null=True)
