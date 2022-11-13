@@ -16,12 +16,16 @@
     <div class="text2">
       <div style="position:sticky;top: 0; width:fit-content; background-color: #fff;">
         <div class="btns">
-          <button>Add link</button>
+          <button>
+            <a href="{% url 'Add Link' %}">
+              Add Link
+            </a>
+          </button>
         </div>
       </div>
-        <div style="font-size: 1.5em; text-align:center;">
-          LINKS
-        </div>
+      <div style="font-size: 1.5em; text-align:center;">
+        LINKS
+      </div>
       <div class="container">
         {% for item in link_list %}
         <div class="box">
@@ -30,11 +34,23 @@
           </div>
           <div class="name_job">{{ item.name }}</div>
           <div class="btns1">
-            <button>Visit</button>
+            <button>
+              <a href="{{ item.link }}">
+                Visit
+              </a>
+            </button>
           </div>
           <div class="btns">
-            <button>Edit</button>
-            <button>Delete</button>
+            <button>
+              <a href="{% url 'Edit Link' item.id %}">
+                Edit
+              </a>
+            </button>
+            <button>
+              <a href="{% url 'Delete Link' item.id %}">
+                Delete
+              </a>
+            </button>
           </div>
         </div>
         {% endfor %}

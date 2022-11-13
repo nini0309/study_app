@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import Task, Course, Link
-from .forms import AddTask, AddCourse
+from .forms import AddTask, AddCourse, AddLink
 
 # Create your views here.
 
@@ -130,6 +130,46 @@ def links(request):
     }
     return render(request, 'links.html', context)
 
+@login_required(login_url='Log in')
+def addlink(request):
+    form = AddLink()
+    context = {
+        'form': form
+    }
+    if request.method == 'POST':
+        form = AddLink(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            return redirect('Links')
+    return render(request, 'links/addlink.html', context)
+
+@login_required(login_url='Log in')
+def editlink(request, pk):
+    link = Link.objects.get(id=pk)
+    form = AddLink(instance=link)
+    context = {
+        'form': form
+    }
+    if request.method == 'POST':
+        form = AddLink(request.POST, instance=link)
+        if form.is_valid():
+            form.save()
+            return redirect('Links')
+    return render(request, 'links/addlink.html', context)
+
+
+@login_required(login_url='Log in')
+def deletelink(request, pk):
+    link = Link.objects.get(id=pk)
+    context = {
+        'item': link
+    }
+    if request.method == 'POST':
+        link.delete()
+        return redirect('Links')
+    return render(request, 'links/deletelink.html', context)
 
 @login_required(login_url='Log in')
 def schedule(request):

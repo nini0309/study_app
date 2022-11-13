@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 from django.forms.widgets import SelectDateWidget
 
-from .models import Task, Course
+from .models import Task, Course, Link
 
 class CreateUserForm(UserCreationForm):
 
@@ -25,3 +25,8 @@ class AddCourse(ModelForm):
     class Meta:
         model = Course
         fields = ['subject', 'important', 'done', 'left']
+
+class AddLink(ModelForm):
+    class Meta:
+        model = Link
+        fields = ['name', 'link']

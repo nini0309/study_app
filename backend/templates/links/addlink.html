@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+   </head>
+<body>
+  <div class="wrapper">
+    <h2>Enter Link Details</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="input-box">
+        {{ field }}
+      </div>
+      {% endfor %}
+      <div class="input-box button">
+        <input type="submit" value="Save">
+      </div>
+      <button class="button1">
+        <a href="{% url 'Links' %}">Cancel</a>
+      </button>
+      <div class="text">
+        <h3> {{form.errors}} </h3>
+      </div>
+    </form>
+  </div>
+  <script>
+    //Query All input fields
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Enter name';
+    form_fields[2].placeholder = 'Enter link';
+
+
+    for (var field in form_fields) {
+      form_fields[field].className += ' form-control'
+    }
+  </script>
+</body>
+</html>

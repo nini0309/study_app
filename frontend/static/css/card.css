@@ -10,6 +10,10 @@ html,body{
   height: 100%;
   place-items: center;
 }
+.btns a{text-decoration: none; color: #fff;}
+.btns1 a{text-decoration: none; color: #000;}
+.btns a:visited { text-decoration: none; color:#fff; }
+.btns1 a:visited { text-decoration: none; color:#000; }
 
 .container{
   /* margin-top: 10px; */
