@@ -5,7 +5,7 @@ a{
 a:visited { text-decoration: none; color:#fff; }
 .button{
   background-color: #000;
-  padding: 1em 2em;
+  padding: 15px 15px;
   color: #fff;
   border: 0;
   border-radius: 5px;
