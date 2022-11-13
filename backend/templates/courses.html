@@ -1,12 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
 </head>
+
 <body>
     {% include 'components/navbar.html' %}
+    <section class="home">
+        <div class="text2">
+            <div style="position:sticky;width: 100%;top: 0;background-color: #fff;">
+                <button class="button">
+                    <a href="">
+                        Add course
+                    </a>
+                </button>
+            </div>
+            <table>
+                <caption>Courses</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Important Chapters</th>
+                        <th scope="col">Chapters done</th>
+                        <th scope="col">Chapters left</th>
+                        <th scope="col"> </th>
+                        <th scope="col"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Name">DSA</td>
+                        <td data-label="Important">Trees, graphs</td>
+                        <td data-label="Done">Linked list, stack, queue, trees</td>
+                        <td data-label="Left">Graphs</td>
+                        <td data-label="Edit">
+                            <button class="button">
+                                <a href="">
+                                    Edit
+                                </a>
+                            </button>
+                        </td>
+                        <td data-label="Delete">
+                            <button class="button">
+                                <a href="">
+                                    Delete
+                                </a>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 </body>
+
 </html>
