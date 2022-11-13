@@ -6,8 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import Task
-from .forms import AddTask
+from .models import Task, Course
+from .forms import AddTask, AddCourse
 
 # Create your views here.
 
@@ -75,7 +75,51 @@ def calendar(request):
 
 @login_required(login_url='Log in')
 def courses(request):
-    return render(request, 'courses.html')
+    course_list = Course.objects.filter(user=request.user)
+    context = {
+        'course_list': course_list
+    }
+    return render(request, 'courses.html', context)
+
+@login_required(login_url='Log in')
+def addcourses(request):
+    form = AddCourse()
+    context = {
+        'form': form
+    }
+    if request.method == 'POST':
+        form = AddCourse(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            return redirect('Courses')
+    return render(request, 'courses/addcourse.html', context)
+
+@login_required(login_url='Log in')
+def editcourses(request, pk):
+    course = Course.objects.get(id=pk)
+    form = AddCourse(instance=course)
+    context = {
+        'form': form
+    }
+    if request.method == 'POST':
+        form = AddCourse(request.POST, instance=course)
+        if form.is_valid():
+            form.save()
+            return redirect('Courses')
+    return render(request, 'courses/addcourse.html', context)
+
+@login_required(login_url='Log in')
+def deletecourses(request, pk):
+    course = Course.objects.get(id=pk)
+    context = {
+        'item': course
+    }
+    if request.method == 'POST':
+        course.delete()
+        return redirect('Courses')
+    return render(request, 'courses/deletecourse.html', context)
 
 
 @login_required(login_url='Log in')
