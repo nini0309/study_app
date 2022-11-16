@@ -9,7 +9,8 @@ urlpatterns = [
     path('tasks/edit/<str:pk>/', views.edittasks, name = "Edit Tasks"),
     path('tasks/delete/<str:pk>/', views.deletetasks, name = "Delete Tasks"),
 
-    path('calendar/', views.calendar, name = "Calendar"),
+    path('calendar/', views.calendar_today, name = "Calendar"),
+    path('eventcalendar/<int:year>/<int:month>/', views.calendar_view, name = "EventCalendar"),
 
     path('courses/', views.courses, name = "Courses"),
     path('courses/add', views.addcourses, name = "Add Course"),

@@ -1,6 +1,6 @@
+from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
-
 # Create your models here.
 
 class Task(models.Model):
@@ -40,3 +40,9 @@ class Link(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=100,null=True)
     link = models.CharField(max_length=500,null=True)
+
+class Event(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    date = models.DateField(null=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
+ 

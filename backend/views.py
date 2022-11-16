@@ -6,6 +6,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+import calendar
+from calendar import HTMLCalendar
+from datetime import datetime
+
 from .models import Task, Course, Link
 from .forms import AddTask, AddCourse, AddLink
 
@@ -69,8 +73,24 @@ def deletetasks(request, pk):
 
 
 @login_required(login_url='Log in')
-def calendar(request):
-    return render(request, 'calendar.html')
+def calendar_view(request, year, month):
+
+    cal = HTMLCalendar().formatmonth(year, month)
+    context = {
+        'year' : year,
+        'month' : month,
+        'calendar' : cal
+    }
+    return render(request, 'calendar.html', context)
+
+@login_required(login_url='Log in')
+def calendar_today(request):
+    now = datetime.now()
+    cal = HTMLCalendar().formatmonth(now.year, now.month)
+    context = {
+        'calendar' : cal
+    }
+    return render(request, 'calendar.html', context)
 
 
 @login_required(login_url='Log in')
