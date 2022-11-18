@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task, Course, Link, Event
+from .models import Task, Course, Link, Event, Quote
 admin.site.site_header = 'Keep Up Dashboard'
 
 class TaskAdmin(admin.ModelAdmin):
@@ -18,8 +18,13 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('date','name')
     list_filter = ['date']
 
+class QuoteAdmin(admin.ModelAdmin):
+    list_display = ('quote','author')
+    list_filter = ['quote']
+
 # Register your models here.
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Link, LinkAdmin)
 admin.site.register(Event, EventAdmin)
+admin.site.register(Quote, QuoteAdmin)

@@ -7,10 +7,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 import calendar
+import random
+
 from calendar import HTMLCalendar
 from datetime import datetime
 
-from .models import Task, Course, Link
+from .models import Task, Course, Link, Quote
 from .forms import AddTask, AddCourse, AddLink
 
 # Create your views here.
@@ -18,7 +20,12 @@ from .forms import AddTask, AddCourse, AddLink
 
 @login_required(login_url='Log in')
 def homepage(request):
-    return render(request, 'homepage.html')
+    items = list(Quote.objects.all())
+    random_item = random.choice(items)
+    context = {
+        'quote': random_item
+    }
+    return render(request, 'homepage.html', context)
 
 
 @login_required(login_url='Log in')

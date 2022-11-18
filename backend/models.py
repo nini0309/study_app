@@ -3,6 +3,11 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+class Quote(models.Model):
+    quote = models.CharField(max_length=500,null=True)
+    author = models.CharField(max_length=100,null=True)
+
+
 class Task(models.Model):
     STATUS = (
     ('Not started', 'Not started'),
