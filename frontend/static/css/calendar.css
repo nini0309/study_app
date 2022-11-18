@@ -1,0 +1,52 @@
+a{
+    text-decoration: none;
+    color:#fff;
+  }
+  a:visited { text-decoration: none; color:#fff; }
+  .button{
+    background-color: #000;
+    padding: 15px 15px;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .button:hover{
+    background: #707070;
+  }
+  table {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      table-layout: fixed;
+    }
+    
+    table caption {
+      font-size: 1.5em;
+      margin: .5em 0 .75em;
+    }
+    
+    table tr {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: .35em;
+    }
+    
+    table th,
+    table td {
+      padding: .625em;
+      text-align: center;
+    }
+    
+    table th {
+      font-size: .85em;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+       
+      
