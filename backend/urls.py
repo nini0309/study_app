@@ -23,8 +23,8 @@ urlpatterns = [
     path('links/edit/<str:pk>', views.editlink, name = "Edit Link"),
     path('links/delete/<str:pk>', views.deletelink, name = "Delete Link"),
 
-    path('schedule/', views.schedule, name = "Schedule"),
-    path('studymode/', views.study_mode, name = "Study Mode"),
+    # path('schedule/', views.schedule, name = "Schedule"),
+    # path('studymode/', views.study_mode, name = "Study Mode"),
     path('register/', views.register, name = "Register"),
     path('login/', views.login_page, name = "Log in"),
     path('logout/', views.logout_page, name = "Log out")

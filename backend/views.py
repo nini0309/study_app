@@ -11,6 +11,7 @@ import random
 
 from calendar import HTMLCalendar
 from datetime import datetime
+from datetime import timedelta 
 
 from .models import Task, Course, Link, Quote
 from .forms import AddTask, AddCourse, AddLink
@@ -83,19 +84,38 @@ def deletetasks(request, pk):
 def calendar_view(request, year, month):
 
     cal = HTMLCalendar().formatmonth(year, month)
+    current = datetime(year, month, 1)
+    next_month = current + timedelta(days = 31)
+    prev_month = current - timedelta(days = 31)
+    n_m = next_month.month
+    n_y = next_month.year
+    p_m = prev_month.month
+    p_y = prev_month.year
     context = {
-        'year' : year,
-        'month' : month,
-        'calendar' : cal
+        'calendar' : cal,
+        'next_month' : n_m,
+        'next_year' : n_y,
+        'prev_month' : p_m,
+        'prev_year' : p_y
     }
     return render(request, 'calendar.html', context)
 
 @login_required(login_url='Log in')
 def calendar_today(request):
     now = datetime.now()
+    next_month = now + timedelta(days = 30)
+    prev_month = now - timedelta(days = 30)
+    n_m = next_month.month
+    n_y = next_month.year
+    p_m = prev_month.month
+    p_y = prev_month.year
     cal = HTMLCalendar().formatmonth(now.year, now.month)
     context = {
-        'calendar' : cal
+        'calendar' : cal,
+        'next_month' : n_m,
+        'next_year' : n_y,
+        'prev_month' : p_m,
+        'prev_year' : p_y
     }
     return render(request, 'calendar.html', context)
 
@@ -198,14 +218,14 @@ def deletelink(request, pk):
         return redirect('Links')
     return render(request, 'links/deletelink.html', context)
 
-@login_required(login_url='Log in')
-def schedule(request):
-    return render(request, 'schedule.html')
+# @login_required(login_url='Log in')
+# def schedule(request):
+#     return render(request, 'schedule.html')
 
 
-@login_required(login_url='Log in')
-def study_mode(request):
-    return render(request, 'studymode.html')
+# @login_required(login_url='Log in')
+# def study_mode(request):
+#     return render(request, 'studymode.html')
 
 
 def register(request):
