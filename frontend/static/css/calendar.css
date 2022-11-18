@@ -23,7 +23,7 @@ a{
       padding: 0;
       width: 100%;
       table-layout: fixed;
-      overflow-x: auto;
+      overflow-x:scroll;
     }
     
     table caption {
